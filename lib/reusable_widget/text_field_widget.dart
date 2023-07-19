@@ -1,29 +1,42 @@
 import 'package:flutter/material.dart';
 
-TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
-  return TextField(
-    controller: controller,
-    enableSuggestions: !isPasswordType,
-    autocorrect: !isPasswordType,
-    cursorColor: Colors.white,
-    style: TextStyle(
-      color: Colors.white.withOpacity(0.9),
-    ),
-    decoration: InputDecoration(
-      prefixIcon: Icon(
-        icon,
-        color: Colors.white70,
+class ReusableTextField extends StatelessWidget {
+  final icon;
+  final controller;
+  final String labelText;
+  final bool obscureText;
+  const ReusableTextField(
+      {super.key,
+      required this.controller,
+      required this.labelText,
+      required this.obscureText, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
+      child: TextField(
+        controller: controller,
+        obscureText: obscureText,
+       
+
+        decoration: InputDecoration(
+            prefixIcon: Icon(
+              icon,
+            
+            ),
+            labelText: labelText,
+            labelStyle: TextStyle(color: Colors.grey.shade800),
+            filled: true,
+            fillColor: Colors.grey.shade200,
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: const BorderSide(color: Colors.white)),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20.0),
+                borderSide: BorderSide(color: Colors.grey.shade400))),
+        // keyboardType: isPasswordType ? TextInputType.visiblePassword: TextInputType.emailAddress,
       ),
-      labelText: text,
-      labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
-      filled: true,
-      floatingLabelBehavior: FloatingLabelBehavior.never,
-      fillColor: Colors.white.withOpacity(0.3),
-      border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30.0),
-          borderSide: BorderSide(width: 0, style: BorderStyle.none)),
-    ),
-    keyboardType: isPasswordType ? TextInputType.visiblePassword: TextInputType.emailAddress,
-  );
+    );
+  }
 }
