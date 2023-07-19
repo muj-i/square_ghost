@@ -79,8 +79,9 @@ class _LogInScreenState extends State<LogInScreen> {
         .signInWithEmailAndPassword(
             email: _emailController.text, password: _passwordController.text)
         .then((value) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      Navigator.pushAndRemoveUntil(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen())
+          ,(route) => false,);
     });
                 },
               ),
