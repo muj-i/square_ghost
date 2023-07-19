@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "863944484000",
+    "project_id": "square-ghost",
+    "storage_bucket": "square-ghost.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863944484000:android:b9a36306a38db4225715c5",
+        "android_client_info": {
+          "package_name": "com.muj.squareghost.square_ghost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863944484000-j76pke2g7ai6kli3bkr73b55qfjrndif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkt3VS_HmN4V34Rc82bf6jVnrWKfsJnpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863944484000-j76pke2g7ai6kli3bkr73b55qfjrndif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
