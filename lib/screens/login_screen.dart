@@ -16,6 +16,9 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+ final GlobalKey<FormState> _emailFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _passwordFormKey = GlobalKey<FormState>();
+
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -42,7 +45,8 @@ class _LogInScreenState extends State<LogInScreen> {
                 labelText: 'Enter Email Address',
                 icon: Icons.email_rounded,
                 obscureText: false,
-                controller: _emailController,
+                controller: _emailController, formValidationKey: _emailFormKey, validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter an email address.';}
+ return null;},
               ),
               const SizedBox(
                 height: 20,
@@ -51,7 +55,8 @@ class _LogInScreenState extends State<LogInScreen> {
                 labelText: 'Enter Password',
                 icon: Icons.lock_rounded,
                 obscureText: true,
-                controller: _passwordController,
+                controller: _passwordController, formValidationKey: _passwordFormKey, validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter Password.';}
+ return null;},
               ),
               const SizedBox(
                 height: 10,

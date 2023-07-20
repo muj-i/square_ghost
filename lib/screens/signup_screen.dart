@@ -14,6 +14,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+   final GlobalKey<FormState> _emailFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _passwordFormKey = GlobalKey<FormState>();
+  
+  final GlobalKey<FormState> _userNameFormKey = GlobalKey<FormState>();
   final _userNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -39,7 +43,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               labelText: 'Enter User Name',
               icon: Icons.person_rounded,
               obscureText: false,
-              controller: _userNameController,
+              controller: _userNameController, formValidationKey: _userNameFormKey,validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter an email address.';}
+ return null;},
             ),
             const SizedBox(
               height: 30,
@@ -48,7 +53,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               labelText: 'Enter Email Address',
               icon: Icons.email_rounded,
               obscureText: false,
-              controller: _emailController,
+              controller: _emailController,formValidationKey: _emailFormKey,validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter an email address.';}
+ return null;},
             ),
             const SizedBox(
               height: 30,
@@ -57,7 +63,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               labelText: 'Enter Password',
               icon: Icons.lock_rounded,
               obscureText: true,
-              controller: _passwordController,
+              controller: _passwordController,formValidationKey: _passwordFormKey,validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter an email address.';}
+ return null;},
             ),
             const SizedBox(
               height: 30,
