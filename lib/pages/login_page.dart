@@ -68,6 +68,7 @@ class _LogInPageState extends State<LogInPage> {
                 icon: Icons.email_rounded,
                 obscureText: false,
                 controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(
                 height: 20,
@@ -78,6 +79,7 @@ class _LogInPageState extends State<LogInPage> {
                 icon: Icons.lock_rounded,
                 obscureText: true,
                 controller: _passwordController,
+                keyboardType: TextInputType.text,
               ),
               const SizedBox(
                 height: 10,

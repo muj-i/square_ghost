@@ -7,11 +7,12 @@ class ReusableTextField extends StatelessWidget {
   final controller;
   final String labelText;
   final bool obscureText;
+   final TextInputType keyboardType;
   const ReusableTextField(
       {super.key,
       required this.controller,
       required this.labelText,
-      required this.obscureText, required this.icon});
+      required this.obscureText, required this.icon, required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,17 @@ class ReusableTextField extends StatelessWidget {
       child: TextField(
         controller: controller,
         obscureText: obscureText,
-       
+       keyboardType: keyboardType,
 
         decoration: InputDecoration(
+          
             prefixIcon: Icon(
               icon,
             
-            ),
+            ),prefixIconConstraints: BoxConstraints(
+            minWidth: 65,
+          ),
+            contentPadding: EdgeInsets.symmetric(horizontal: 25,),
             labelText: labelText,
             labelStyle: TextStyle(color: Colors.grey.shade800),
             filled: true,

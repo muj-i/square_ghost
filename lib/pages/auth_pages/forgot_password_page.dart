@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:square_ghost/reusable_widgets/all_over_button.dart';
 import 'package:square_ghost/reusable_widgets/constants.dart';
 import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 
@@ -58,25 +59,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             icon: Icons.email_rounded,
             obscureText: false,
             controller: _emailController,
+            keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(
             height: 20,
           ),
-          Material(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            color: Colors.black,
-            child: MaterialButton(
-              onPressed: () {
-                passwordReset();
-              },
-              child: Text(
-                'Reset Password',
-                style: myButtonTextStyle,
-              ),
-              //color: Colors.black,
-            ),
-          )
+          AllOverButton(onTap: (){passwordReset();}, buttonName: "Reset Password"),
+          
         ],
       ),
     );
