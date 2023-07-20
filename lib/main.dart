@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:square_ghost/screens/login_screen.dart';
+import 'package:square_ghost/auth/logedin_checking_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const LogInScreen(),
+      home: const LogedinCheckingScreen(),
     );
   }
 }

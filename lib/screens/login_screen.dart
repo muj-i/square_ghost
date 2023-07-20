@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:square_ghost/reusable_widget/elevated_button.dart';
+import 'package:square_ghost/reusable_widget/sign_in_sign_up_button.dart';
 
 import 'package:square_ghost/reusable_widget/text_field_widget.dart';
-import 'package:square_ghost/screens/home_screen.dart';
-import 'package:square_ghost/screens/signup_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../reusable_widget/constants.dart';
 
 class LogInScreen extends StatefulWidget {
-  const LogInScreen({super.key});
+  final VoidCallback showSignUpPage;
+  const LogInScreen({super.key, required this.showSignUpPage});
 
   @override
   State<LogInScreen> createState() => _LogInScreenState();
 }
 
 class _LogInScreenState extends State<LogInScreen> {
- final GlobalKey<FormState> _emailFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _passwordFormKey = GlobalKey<FormState>();
-
-
+// textfield controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+//sign in method
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+    
+  }
+
+  //dispose for memory management
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,39 +43,43 @@ class _LogInScreenState extends State<LogInScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const SizedBox(
                 height: 30,
               ),
+              //logo image
               logoWidget('assets/logo/logo.png'),
+              //welcome messeage
               Text(
                 "Wlcome back, you've been missed!",
-                style: myTextStyle,
+                style: myGFontTextStyle,
               ),
               const SizedBox(
                 height: 30,
               ),
+              //email textfiled
               ReusableTextField(
                 labelText: 'Enter Email Address',
                 icon: Icons.email_rounded,
                 obscureText: false,
-                controller: _emailController, formValidationKey: _emailFormKey, validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter an email address.';}
- return null;},
+                controller: _emailController,
               ),
               const SizedBox(
                 height: 20,
               ),
+              //password textfiled
               ReusableTextField(
                 labelText: 'Enter Password',
                 icon: Icons.lock_rounded,
                 obscureText: true,
-                controller: _passwordController, formValidationKey: _passwordFormKey, validator: (String? value ) { if (value == null || value.isEmpty){return 'Please enter Password.';}
- return null;},
+                controller: _passwordController,
               ),
               const SizedBox(
                 height: 10,
               ),
-               Padding(
+              //forgot password
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -76,23 +94,17 @@ class _LogInScreenState extends State<LogInScreen> {
               const SizedBox(
                 height: 10,
               ),
-              SignInSignUpButton(
+              //sign in button
+              LogInSignUpButton(
                 isLogin: true,
                 onTap: () {
-                 
-                  FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: _emailController.text, password: _passwordController.text)
-        .then((value) {
-      Navigator.pushAndRemoveUntil(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen())
-          ,(route) => false,);
-    });
+                  signIn();
                 },
               ),
               const SizedBox(
                 height: 10,
               ),
+              //sign up option
               signUpOption()
             ],
           ),
@@ -101,6 +113,7 @@ class _LogInScreenState extends State<LogInScreen> {
     );
   }
 
+//sign up option method
   Row signUpOption() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -111,8 +124,8 @@ class _LogInScreenState extends State<LogInScreen> {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SignUpScreen()));
+            widget.showSignUpPage();
+            
           },
           child: Text(
             " Sign Up",

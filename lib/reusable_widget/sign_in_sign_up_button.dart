@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SignInSignUpButton extends StatelessWidget {
+class LogInSignUpButton extends StatelessWidget {
   final Function() onTap;
   final bool isLogin;
 
-  const SignInSignUpButton(
+  const LogInSignUpButton(
       {super.key, required this.onTap, required this.isLogin});
 
   @override
@@ -29,15 +29,3 @@ class SignInSignUpButton extends StatelessWidget {
     );
   }
 }
-
-
-
-// FirebaseAuth.instance
-//                     .signInWithEmailAndPassword(
-//                         email: _emailController.text,
-//                         password: _passwordController.text)
-//                     .then((value) {
-//                   print('in');
-//                   Navigator.push(context,
-//                       MaterialPageRoute(builder: (context) => HomeScreen()));
-//                 });
