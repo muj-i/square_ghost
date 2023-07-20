@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:square_ghost/reusable_widget/sign_in_sign_up_button.dart';
+import 'package:square_ghost/pages/auth_pages/forgot_password_page.dart';
+import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
 
-import 'package:square_ghost/reusable_widget/text_field_widget.dart';
+import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../reusable_widget/constants.dart';
+import '../reusable_widgets/constants.dart';
 
-class LogInScreen extends StatefulWidget {
+class LogInPage extends StatefulWidget {
   final VoidCallback showSignUpPage;
-  const LogInScreen({super.key, required this.showSignUpPage});
+  const LogInPage({super.key, required this.showSignUpPage});
 
   @override
-  State<LogInScreen> createState() => _LogInScreenState();
+  State<LogInPage> createState() => _LogInPageState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LogInPageState extends State<LogInPage> {
 // textfield controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
 //sign in method
   Future signIn() async {
+    try{
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
-    
+        } on FirebaseAuthException catch (e) {
+      ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
+    }
   }
 
   //dispose for memory management
@@ -84,9 +88,17 @@ class _LogInScreenState extends State<LogInScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      'Forgot Password?',
-                      style: myTextStyle,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ForgotPasswordPage();
+                        },),);
+                      },
+                      child: Text(
+                        'Forgot Password?',
+                        style: myGestureTextStyle,
+                      ),
                     ),
                   ],
                 ),
@@ -125,14 +137,10 @@ class _LogInScreenState extends State<LogInScreen> {
         GestureDetector(
           onTap: () {
             widget.showSignUpPage();
-            
           },
           child: Text(
             " Sign Up",
-            style: TextStyle(
-                color: Colors.grey.shade800,
-                fontSize: 15,
-                fontWeight: FontWeight.bold),
+            style: myGestureTextStyle,
           ),
         )
       ],

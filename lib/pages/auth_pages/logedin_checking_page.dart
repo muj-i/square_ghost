@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:square_ghost/auth/signedup_checking_screen.dart';
-import 'package:square_ghost/screens/home_screen.dart';
+import 'package:square_ghost/pages/auth_pages/signedup_checking_page.dart';
+import 'package:square_ghost/pages/home_page.dart';
 
 
 
-class LogedinCheckingScreen extends StatelessWidget {
-  const LogedinCheckingScreen({super.key});
+class LogedinCheckingPage extends StatelessWidget {
+  const LogedinCheckingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,9 @@ class LogedinCheckingScreen extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomeScreen();
+            return const HomePage();
           } else {
-            return const SignedinCheckingScreen();
+            return const SignedinCheckingPage();
           }
         },
       ),);

@@ -1,17 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:square_ghost/reusable_widget/constants.dart';
+import 'package:square_ghost/pages/user_data_page.dart';
+import 'package:square_ghost/reusable_widgets/constants.dart';
 
 import '../services/delete_account.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
 
   @override
@@ -35,11 +36,22 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       backgroundColor: myBackgroundColor,
-      body: Center(
-        child: Text(
-          'Signed in as: ${user.email!}',
-          style: const TextStyle(fontSize: 29),
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              'Signed in as: ${user.email!}',
+              style: const TextStyle(fontSize: 29),
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return UserDataInputPage();
+                }));
+              },
+              child: Text('data'))
+        ],
       ),
     );
   }

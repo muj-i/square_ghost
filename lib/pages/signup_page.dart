@@ -1,28 +1,57 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:square_ghost/reusable_widget/constants.dart';
-import 'package:square_ghost/reusable_widget/sign_in_sign_up_button.dart';
-import 'package:square_ghost/reusable_widget/text_field_widget.dart';
+import 'package:square_ghost/reusable_widgets/constants.dart';
+import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
+import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 
-class SignUpScreen extends StatefulWidget {
+
+class SignUpPage extends StatefulWidget {
   final VoidCallback showLogInPage;
-  const SignUpScreen({super.key, required this.showLogInPage});
+  const SignUpPage({super.key, required this.showLogInPage});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  final _userNameController = TextEditingController();
+class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+  final _userNameController = TextEditingController();
 
+//dispose for memory management
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _userNameController.dispose();
+
+    super.dispose();
+  }
+/////////////
   //sign up method
   Future signUp() async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    
+    try {
+      if (passwordConfirmed()) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text.trim());
+      }
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
+    }
+  }
+
+//pass confirm method
+  bool passwordConfirmed() {
+    if (_passwordController.text.trim() ==
+        _confirmPasswordController.text.trim()) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -49,18 +78,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   style: myTextStyle,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 //email textfiled
-                ReusableTextField(
-                  labelText: 'Enter User Name',
-                  icon: Icons.person_rounded,
-                  obscureText: false,
-                  controller: _userNameController,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
+
                 ReusableTextField(
                   labelText: 'Enter Email Address',
                   icon: Icons.email_rounded,
@@ -68,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _emailController,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 ReusableTextField(
                   labelText: 'Enter Password',
@@ -77,7 +98,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _passwordController,
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
+                ),
+                ReusableTextField(
+                  labelText: 'Confirm Password',
+                  icon: Icons.lock_rounded,
+                  obscureText: true,
+                  controller: _confirmPasswordController,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ReusableTextField(
+                  labelText: 'Enter Your Name',
+                  icon: Icons.person_rounded,
+                  obscureText: false,
+                  controller: _userNameController,
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 LogInSignUpButton(
                   isLogin: false,
@@ -85,7 +124,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     signUp();
                   },
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 signInOption(),
               ]),
         ),
@@ -105,14 +146,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         GestureDetector(
           onTap: () {
             widget.showLogInPage();
-          
           },
           child: Text(
             " Log In",
-            style: TextStyle(
-                color: Colors.grey.shade800,
-                fontSize: 15,
-                fontWeight: FontWeight.bold),
+            style: myGestureTextStyle,
           ),
         )
       ],
