@@ -12,7 +12,7 @@ var myGestureTextStyle = TextStyle(
     color: Colors.grey.shade800, fontSize: 15, fontWeight: FontWeight.bold);
 
 var myButtonTextStyle =
-    TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
+    const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarTitle;

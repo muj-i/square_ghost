@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:square_ghost/pages/signup_page.dart';
-import 'package:square_ghost/reusable_widgets/constants.dart';
 
 class UserDataInputPage extends StatefulWidget {
   @override
@@ -34,7 +32,7 @@ class _UserDataInputPageState extends State<UserDataInputPage> {
           children: [
             TextFormField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: 'Name'),
             ),
             TextFormField(
               controller: _bioController,
