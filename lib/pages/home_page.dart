@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:square_ghost/reusable_widgets/constants.dart';
-import 'package:square_ghost/reusable_widgets/fab.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -79,17 +77,12 @@ class _HomePageState extends State<HomePage> {
           
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FabButton(
-              onPressed: () {},
-              icon: Icon(
-                FontAwesomeIcons.solidPenToSquare,
-                color: Colors.white,
-              )),
-        ],
-      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(
+            FontAwesomeIcons.solidPenToSquare,
+            color: Colors.white,
+          )),
     );
   }
 }

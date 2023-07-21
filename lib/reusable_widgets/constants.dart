@@ -62,3 +62,12 @@ Image logoWidget(String imageName) {
     //color: Colors.white,
   );
 }
+Image logoNameWidget(String imageName) {
+  return Image.asset(
+    imageName,
+    fit: BoxFit.fitWidth,
+    width: 240,
+    height: 50,
+    //color: Colors.white,
+  );
+}

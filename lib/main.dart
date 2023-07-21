@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Square Ghost',
       theme: ThemeData(
-        
+        primaryColor: Colors.black,
         useMaterial3: true,
+ 
       ),
       debugShowCheckedModeBanner: false,
       home: const LogedinCheckingPage(),

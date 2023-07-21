@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
         );
 
         addUserDetails(_nameController.text.trim(), _bioController.text.trim(),
-            int.parse(_ageController.text.trim()));
+            int.parse(_ageController.text.trim()), _emailController.text.trim(), );
       }
     } on FirebaseAuthException catch (e) {
       print(e);
@@ -60,11 +60,12 @@ class _SignUpPageState extends State<SignUpPage> {
     String name,
     String bio,
     int age,
+    String email,
   ) async {
     await FirebaseFirestore.instance.collection("users").add({
       'name': name,
       'bio': bio,
-      'age': age,
+      'age': age,'email': email,
       //'gender' :gender,
     });
   }
@@ -92,7 +93,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 //logo image
-                logoWidget('assets/logo/logo.png'),
+                logoNameWidget('assets/logo/logo_name.png'),
                 Text(
                   "Hello There",
                   style: myGFontTextStyle,
@@ -110,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.person_rounded,
                   obscureText: false,
                   controller: _nameController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -120,22 +121,22 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.description_rounded,
                   obscureText: false,
                   controller: _bioController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 ReusableTextField(
                   labelText: 'Enter Your Age',
-                  icon: FontAwesomeIcons.angellist,
+                  icon: FontAwesomeIcons.childReaching,
                   obscureText: false,
                   controller: _ageController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.number, keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                //GenderSelection(),
+                GenderSelection(),
                 const SizedBox(
                   height: 20,
                 ),
@@ -147,7 +148,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.email_rounded,
                   obscureText: false,
                   controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.emailAddress, keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -157,7 +158,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.lock_rounded,
                   obscureText: true,
                   controller: _passwordController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -167,7 +168,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.lock_rounded,
                   obscureText: true,
                   controller: _confirmPasswordController,
-                  keyboardType: TextInputType.text,
+                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
                 ),
 
                 const SizedBox(

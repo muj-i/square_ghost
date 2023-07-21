@@ -6,19 +6,19 @@ import 'package:square_ghost/reusable_widgets/constants.dart';
 import 'package:square_ghost/reusable_widgets/gender_selection.dart.dart';
 import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 
-class UserDataInputPage extends StatefulWidget {
-  const UserDataInputPage({super.key});
+class UpdateUserDataInputPage extends StatefulWidget {
+  const UpdateUserDataInputPage({super.key});
 
   @override
  
-  _UserDataInputPageState createState() => _UserDataInputPageState();
+  _UpdateUserDataInputPageState createState() => _UpdateUserDataInputPageState();
 
-   static final GlobalKey<_UserDataInputPageState> userDataInputPageKey =
-      GlobalKey<_UserDataInputPageState>();
+   static final GlobalKey<_UpdateUserDataInputPageState> UpdateUserDataInputPageKey =
+      GlobalKey<_UpdateUserDataInputPageState>();
   
 }
 
-class _UserDataInputPageState extends State<UserDataInputPage> {
+class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
   final _nameController = TextEditingController();
   final _bioController = TextEditingController();
   final _ageController = TextEditingController();
@@ -43,39 +43,47 @@ class _UserDataInputPageState extends State<UserDataInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: MyAppBar(appBarTitle: 'Input Your Data'),
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(30),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
+      ),
       backgroundColor: myBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              
               const SizedBox(
                 height: 20,
               ),
               //logo image
-              logoWidget('assets/logo/logo.png'),
+              
+                logoNameWidget('assets/logo/logo_name.png'),SizedBox(
+                height: 20,
+              ),
               Text(
-                "Hello There",
+                "Wanna Update Something?",
                 style: myGFontTextStyle,
               ),
               //welcome messeage
               Text(
-                "Submit your details below",
+                "No Worries! Update your details below",
                 style: myTextStyle,
               ),
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              
               ReusableTextField(
                 labelText: 'Enter Your Name',
                 icon: Icons.person_rounded,
                 obscureText: false,
                 controller: _nameController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
               ),
               const SizedBox(
                 height: 20,
@@ -85,17 +93,17 @@ class _UserDataInputPageState extends State<UserDataInputPage> {
                 icon: Icons.description_rounded,
                 obscureText: false,
                 controller: _bioController,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
               ),
               const SizedBox(
                 height: 20,
               ),
               ReusableTextField(
                 labelText: 'Enter Your Age',
-                icon: FontAwesomeIcons.angellist,
+                icon: FontAwesomeIcons.childReaching,
                 obscureText: false,
                 controller: _ageController,
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.number, keyboardAction: TextInputAction.done,
               ),
               const SizedBox(
                 height: 20,
@@ -108,7 +116,7 @@ class _UserDataInputPageState extends State<UserDataInputPage> {
           'name': _nameController.text.trim(),
           'bio': _bioController.text.trim(),
           'age': int.tryParse(_ageController.text.trim()) ?? 0,
-        });}, buttonName: "Submit"),
+        });}, buttonName: "Update Information"),
             ],
           ),
         ),

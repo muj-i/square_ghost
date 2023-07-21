@@ -42,31 +42,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     return Scaffold(
       appBar: const MyAppBar(appBarTitle: 'Forgot Password'),
       backgroundColor: myBackgroundColor,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Enter Your Email\nWe will send you a password reset link',
-            textAlign: TextAlign.center,
-            style: myTextStyle,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          //email textfiled
-          ReusableTextField(
-            labelText: 'Enter Email Address',
-            icon: Icons.email_rounded,
-            obscureText: false,
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          AllOverButton(onTap: (){passwordReset();}, buttonName: "Reset Password"),
-          
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [logoWidget('assets/logo/logo.png'),
+            Text(
+              'Enter Your Email\nWe will send you a password reset link',
+              textAlign: TextAlign.center,
+              style: myTextStyle,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            //email textfiled
+            ReusableTextField(
+              labelText: 'Enter Email Address',
+              icon: Icons.email_rounded,
+              obscureText: false,
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress, keyboardAction: TextInputAction.done,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            AllOverButton(onTap: (){passwordReset();}, buttonName: "Reset Password"),
+            
+          ],
+        ),
       ),
     );
   }
