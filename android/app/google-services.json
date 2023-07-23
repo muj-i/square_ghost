@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "863944484000",
-    "project_id": "square-ghost",
-    "storage_bucket": "square-ghost.appspot.com"
+    "project_number": "389989520532",
+    "project_id": "square-ghost-renew",
+    "storage_bucket": "square-ghost-renew.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:863944484000:android:b9a36306a38db4225715c5",
+        "mobilesdk_app_id": "1:389989520532:android:867fbf24d16d65318b5081",
         "android_client_info": {
           "package_name": "com.muj.squareghost.square_ghost"
         }
       },
       "oauth_client": [
         {
-          "client_id": "863944484000-j76pke2g7ai6kli3bkr73b55qfjrndif.apps.googleusercontent.com",
+          "client_id": "389989520532-s10ou7qcb6vubckcl930vdq465tb0bbh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDkt3VS_HmN4V34Rc82bf6jVnrWKfsJnpU"
+          "current_key": "AIzaSyC4aduQhNslG46xanjnToRM5XnDJbBByLY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "863944484000-j76pke2g7ai6kli3bkr73b55qfjrndif.apps.googleusercontent.com",
+              "client_id": "389989520532-s10ou7qcb6vubckcl930vdq465tb0bbh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

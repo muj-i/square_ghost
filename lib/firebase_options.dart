@@ -44,39 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCcFOHu-wp0GnwzWFZCzS-Miobij2QpbbQ',
-    appId: '1:863944484000:web:2ec8110cd42e062b5715c5',
-    messagingSenderId: '863944484000',
-    projectId: 'square-ghost',
-    authDomain: 'square-ghost.firebaseapp.com',
-    storageBucket: 'square-ghost.appspot.com',
+    apiKey: 'AIzaSyCRUv551Hhb24sRCpdlIbydrSuk31P-ofc',
+    appId: '1:389989520532:web:05bced116e2843468b5081',
+    messagingSenderId: '389989520532',
+    projectId: 'square-ghost-renew',
+    authDomain: 'square-ghost-renew.firebaseapp.com',
+    storageBucket: 'square-ghost-renew.appspot.com',
+    measurementId: 'G-NKC5QBLNND',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDkt3VS_HmN4V34Rc82bf6jVnrWKfsJnpU',
-    appId: '1:863944484000:android:b9a36306a38db4225715c5',
-    messagingSenderId: '863944484000',
-    projectId: 'square-ghost',
-    storageBucket: 'square-ghost.appspot.com',
+    apiKey: 'AIzaSyC4aduQhNslG46xanjnToRM5XnDJbBByLY',
+    appId: '1:389989520532:android:867fbf24d16d65318b5081',
+    messagingSenderId: '389989520532',
+    projectId: 'square-ghost-renew',
+    storageBucket: 'square-ghost-renew.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB6Xka7Pd-uJjE4tezKyRtmGU8nC6fbEB8',
-    appId: '1:863944484000:ios:f744be85c721c4a05715c5',
-    messagingSenderId: '863944484000',
-    projectId: 'square-ghost',
-    storageBucket: 'square-ghost.appspot.com',
-    iosClientId: '863944484000-kqr1oe1chhnel9tlfpttm5umsvnpp359.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBy6eHixEc5_H59eYOZqcKx1Robt8HWjFQ',
+    appId: '1:389989520532:ios:566780c22de59ccc8b5081',
+    messagingSenderId: '389989520532',
+    projectId: 'square-ghost-renew',
+    storageBucket: 'square-ghost-renew.appspot.com',
+    iosClientId: '389989520532-ig0c6n0091jurp2levr72etq6moj5d13.apps.googleusercontent.com',
     iosBundleId: 'com.muj.squareghost.squareGhost',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB6Xka7Pd-uJjE4tezKyRtmGU8nC6fbEB8',
-    appId: '1:863944484000:ios:5fd3c50824dd33895715c5',
-    messagingSenderId: '863944484000',
-    projectId: 'square-ghost',
-    storageBucket: 'square-ghost.appspot.com',
-    iosClientId: '863944484000-kj4q1a9o4i91549onmekq455d9uoksms.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBy6eHixEc5_H59eYOZqcKx1Robt8HWjFQ',
+    appId: '1:389989520532:ios:51d63751a4acc2db8b5081',
+    messagingSenderId: '389989520532',
+    projectId: 'square-ghost-renew',
+    storageBucket: 'square-ghost-renew.appspot.com',
+    iosClientId: '389989520532-k5qj9veu0plcu5av824rorvenic10c18.apps.googleusercontent.com',
     iosBundleId: 'com.muj.squareghost.squareGhost.RunnerTests',
   );
 }

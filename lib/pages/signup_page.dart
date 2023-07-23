@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:square_ghost/reusable_widgets/constants.dart';
@@ -40,35 +41,66 @@ class _SignUpPageState extends State<SignUpPage> {
 /////////////
   //sign up method
   Future signUp() async {
-    try {
+     try {
       if (passwordConfirmed()) {
+    UserCredential userCredential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
-        );
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
 
-        addUserDetails(_nameController.text.trim(), _bioController.text.trim(),
-            int.parse(_ageController.text.trim()), _emailController.text.trim(), );
-      }
-    } on FirebaseAuthException catch (e) {
-      print(e);
-      ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
-    }
+    // if (userCredential.user != null) {
+    //   SnackBar(
+    //     content: Text('This is a snackbar!'),
+    //     duration: Duration(
+    //         seconds:
+    //             2), // Set the duration for how long the snackbar should be displayed
+    //     action: SnackBarAction(
+    //       label: 'Close',
+    //       onPressed: () {
+    //         // You can add an action when the "Close" button is pressed
+    //         ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    //       },
+    //     ),
+    //   );
+    // } else {
+    //   SnackBar(
+    //     content: Text('This is a snackbar!'),
+    //     duration: Duration(
+    //         seconds:
+    //             2), // Set the duration for how long the snackbar should be displayed
+    //     action: SnackBarAction(
+    //       label: 'Close',
+    //       onPressed: () {
+    //         // You can add an action when the "Close" button is pressed
+    //         ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    //       },
+    //     ),
+    //   );
+    // }
+
+    // addUserDetails(_nameController.text.trim(), _bioController.text.trim(),
+    //     int.parse(_ageController.text.trim()), _emailController.text.trim(), );
+     }
+     } on FirebaseAuthException catch (e) {
+    //   print(e);
+    //   ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
+     }
   } // Add the addUserDetails method
 
-  Future<dynamic> addUserDetails(
-    String name,
-    String bio,
-    int age,
-    String email,
-  ) async {
-    await FirebaseFirestore.instance.collection("users").add({
-      'name': name,
-      'bio': bio,
-      'age': age,'email': email,
-      //'gender' :gender,
-    });
-  }
+  // Future<dynamic> addUserDetails(
+  //   String name,
+  //   String bio,
+  //   int age,
+  //   String email,
+  // ) async {
+  //   await FirebaseFirestore.instance.collection("users").add({
+  //     'name': name,
+  //     'bio': bio,
+  //     'age': age,'email': email,
+  //     //'gender' :gender,
+  //   });
+  // }
 
 //pass confirm method
   bool passwordConfirmed() {
@@ -111,7 +143,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.person_rounded,
                   obscureText: false,
                   controller: _nameController,
-                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
+                  keyboardType: TextInputType.text,
+                  keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -121,7 +154,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.description_rounded,
                   obscureText: false,
                   controller: _bioController,
-                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
+                  keyboardType: TextInputType.text,
+                  keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -131,7 +165,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: FontAwesomeIcons.childReaching,
                   obscureText: false,
                   controller: _ageController,
-                  keyboardType: TextInputType.number, keyboardAction: TextInputAction.next,
+                  keyboardType: TextInputType.number,
+                  keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -148,7 +183,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.email_rounded,
                   obscureText: false,
                   controller: _emailController,
-                  keyboardType: TextInputType.emailAddress, keyboardAction: TextInputAction.next,
+                  keyboardType: TextInputType.emailAddress,
+                  keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -158,7 +194,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.lock_rounded,
                   obscureText: true,
                   controller: _passwordController,
-                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.next,
+                  keyboardType: TextInputType.text,
+                  keyboardAction: TextInputAction.next,
                 ),
                 const SizedBox(
                   height: 20,
@@ -168,7 +205,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   icon: Icons.lock_rounded,
                   obscureText: true,
                   controller: _confirmPasswordController,
-                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
+                  keyboardType: TextInputType.text,
+                  keyboardAction: TextInputAction.done,
                 ),
 
                 const SizedBox(

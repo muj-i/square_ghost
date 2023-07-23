@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>863944484000-kqr1oe1chhnel9tlfpttm5umsvnpp359.apps.googleusercontent.com</string>
+	<string>389989520532-ig0c6n0091jurp2levr72etq6moj5d13.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.863944484000-kqr1oe1chhnel9tlfpttm5umsvnpp359</string>
+	<string>com.googleusercontent.apps.389989520532-ig0c6n0091jurp2levr72etq6moj5d13</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB6Xka7Pd-uJjE4tezKyRtmGU8nC6fbEB8</string>
+	<string>AIzaSyBy6eHixEc5_H59eYOZqcKx1Robt8HWjFQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>863944484000</string>
+	<string>389989520532</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.muj.squareghost.squareGhost</string>
 	<key>PROJECT_ID</key>
-	<string>square-ghost</string>
+	<string>square-ghost-renew</string>
 	<key>STORAGE_BUCKET</key>
-	<string>square-ghost.appspot.com</string>
+	<string>square-ghost-renew.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:863944484000:ios:f744be85c721c4a05715c5</string>
+	<string>1:389989520532:ios:566780c22de59ccc8b5081</string>
 </dict>
 </plist>

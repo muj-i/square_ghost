@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:square_ghost/reusable_widgets/all_over_button.dart';
@@ -31,14 +31,14 @@ class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
     super.dispose();
   }
 
-  Future<dynamic> addUserDetails(String name,String bio,int age,) async {
-    await FirebaseFirestore.instance.collection("users").add({
-      'name' : name,
-      'bio' : bio,
-      'age' : age,
-      //'gender' :gender,
-    });
-  }
+  // Future<dynamic> addUserDetails(String name,String bio,int age,) async {
+  //   await FirebaseFirestore.instance.collection("users").add({
+  //     'name' : name,
+  //     'bio' : bio,
+  //     'age' : age,
+  //     //'gender' :gender,
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
