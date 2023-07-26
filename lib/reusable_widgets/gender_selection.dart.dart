@@ -45,6 +45,7 @@ class _GenderSelectionState extends State<GenderSelection> {
                 setState(() {
                   _isMale = value!;
                 });
+                widget.onGenderSelected(_isMale);
               },
             ),
             Text(
@@ -59,6 +60,7 @@ class _GenderSelectionState extends State<GenderSelection> {
                 setState(() {
                   _isMale = value!;
                 });
+                widget.onGenderSelected(_isMale);
               },
             ),
             Text(

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:square_ghost/pages/update_user_data_page.dart';
 
 import 'package:square_ghost/reusable_widgets/constants.dart';
 
@@ -75,9 +76,14 @@ void _fetchUserData() {
           ),
           actions: [
             PopupMenuButton<String>(
+
+
               onSelected: (value) {
                 if (value == 'log_out') {
                   FirebaseAuth.instance.signOut();
+                  setState(() {
+
+                  });
                 } else if (value == 'delete_account') {
                   
                   _deleteAccount;
@@ -113,7 +119,7 @@ void _fetchUserData() {
                   Text('Name: ${userData!['name']}'),
                   Text('Age: ${userData!['age']}'),
                   Text('Bio: ${userData!['bio']}'),
-                 // Text('Gender: ${userData!['gender']}'),
+                  Text('Gender: ${userData!['gender']}'),
                   // Add other user details as needed
                 ],
               ),
@@ -121,7 +127,13 @@ void _fetchUserData() {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+        backgroundColor: Colors.black,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UpdateUserDataInputPage()));
+
+          },
           child: Icon(
             FontAwesomeIcons.solidPenToSquare,
             color: Colors.white,

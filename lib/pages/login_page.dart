@@ -21,15 +21,17 @@ class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 //sign in method
   Future signIn() async {
-    try{
+    //try{
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim());
-        } on FirebaseAuthException catch (e) {
-      ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
-    }
+    //     } on FirebaseAuthException catch (e) {
+    //  // ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
+    // }
   }
 
   //dispose for memory management
@@ -47,81 +49,99 @@ class _LogInPageState extends State<LogInPage> {
       backgroundColor: myBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const SizedBox(
-                height: 30,
-              ),
-              //logo image
-              logoWidget('assets/logo/logo.png'),
-              //welcome messeage
-              Text(
-                "Wlcome back, you've been missed!",
-                style: myGFontTextStyle,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              //email textfiled
-              ReusableTextField(
-                labelText: 'Enter Email Address',
-                icon: Icons.email_rounded,
-                obscureText: false,
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress, keyboardAction: TextInputAction.next,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              //password textfiled
-              ReusableTextField(
-                labelText: 'Enter Password',
-                icon: Icons.lock_rounded,
-                obscureText: true,
-                controller: _passwordController,
-                keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //forgot password
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ForgotPasswordPage();
-                        },),);
-                      },
-                      child: Text(
-                        'Forgot Password?',
-                        style: myGestureTextStyle,
-                      ),
-                    ),
-                  ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const SizedBox(
+                  height: 30,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //sign in button
-              LogInSignUpButton(
-                isLogin: true,
-                onTap: () {
-                  signIn();
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //sign up option
-              signUpOption()
-            ],
+                //logo image
+                logoWidget('assets/logo/logo.png'),
+                //welcome messeage
+                Text(
+                  "Wlcome back, you've been missed!",
+                  style: myGFontTextStyle,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                //email textfiled
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction: TextInputAction.next,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter Email Address',
+
+                  ),
+                  validator: (String? value) {
+                    if (value?.isEmpty ?? true) {
+                      return 'Enter your email';
+                    }
+                    return null;
+                  },
+                ),
+                // TextFormField(
+                //   labelText: 'Enter Email Address',
+                //   icon: Icons.email_rounded,
+                //   obscureText: false,
+                //   controller: _emailController,
+                //   TextInputType: TextInputType.emailAddress, TextInputAction: TextInputAction.next,
+                // ),
+                const SizedBox(
+                  height: 20,
+                ),
+                //password textfiled
+                ReusableTextField(
+                  labelText: 'Enter Password',
+                  icon: Icons.lock_rounded,
+                  obscureText: true,
+                  controller: _passwordController,
+                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                //forgot password
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ForgotPasswordPage();
+                          },),);
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: myGestureTextStyle,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                //sign in button
+                LogInSignUpButton(
+                  isLogin: true,
+                  onTap: () {
+                    signIn();
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                //sign up option
+                signUpOption()
+              ],
+            ),
           ),
         ),
       ),
