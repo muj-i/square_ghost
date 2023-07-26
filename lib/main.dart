@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:square_ghost/pages/auth_pages/logedin_checking_page.dart';
+import 'package:square_ghost/pages/login_page.dart';
+import 'package:square_ghost/pages/signup_page.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: const LogedinCheckingPage(),
+      
     );
   }
 }

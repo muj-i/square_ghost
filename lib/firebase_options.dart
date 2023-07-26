@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '389989520532',
     projectId: 'square-ghost-renew',
     authDomain: 'square-ghost-renew.firebaseapp.com',
+    databaseURL: 'https://square-ghost-renew-default-rtdb.firebaseio.com',
     storageBucket: 'square-ghost-renew.appspot.com',
     measurementId: 'G-NKC5QBLNND',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:389989520532:android:867fbf24d16d65318b5081',
     messagingSenderId: '389989520532',
     projectId: 'square-ghost-renew',
+    databaseURL: 'https://square-ghost-renew-default-rtdb.firebaseio.com',
     storageBucket: 'square-ghost-renew.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:389989520532:ios:566780c22de59ccc8b5081',
     messagingSenderId: '389989520532',
     projectId: 'square-ghost-renew',
+    databaseURL: 'https://square-ghost-renew-default-rtdb.firebaseio.com',
     storageBucket: 'square-ghost-renew.appspot.com',
     iosClientId: '389989520532-ig0c6n0091jurp2levr72etq6moj5d13.apps.googleusercontent.com',
     iosBundleId: 'com.muj.squareghost.squareGhost',
@@ -76,6 +79,7 @@ class DefaultFirebaseOptions {
     appId: '1:389989520532:ios:51d63751a4acc2db8b5081',
     messagingSenderId: '389989520532',
     projectId: 'square-ghost-renew',
+    databaseURL: 'https://square-ghost-renew-default-rtdb.firebaseio.com',
     storageBucket: 'square-ghost-renew.appspot.com',
     iosClientId: '389989520532-k5qj9veu0plcu5av824rorvenic10c18.apps.googleusercontent.com',
     iosBundleId: 'com.muj.squareghost.squareGhost.RunnerTests',

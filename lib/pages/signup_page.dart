@@ -1,8 +1,11 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:square_ghost/pages/home_page.dart';
+import 'package:square_ghost/pages/login_page.dart';
 
 import 'package:square_ghost/reusable_widgets/constants.dart';
 import 'package:square_ghost/reusable_widgets/gender_selection.dart.dart';
@@ -10,8 +13,9 @@ import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
 import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 
 class SignUpPage extends StatefulWidget {
-  final VoidCallback showLogInPage;
-  const SignUpPage({super.key, required this.showLogInPage});
+  const SignUpPage({
+    super.key,
+  });
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -24,7 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-
+bool _selectedGender = true;
 //dispose for memory management
   @override
   void dispose() {
@@ -41,66 +45,40 @@ class _SignUpPageState extends State<SignUpPage> {
 /////////////
   //sign up method
   Future signUp() async {
-     try {
+    try {
       if (passwordConfirmed()) {
-    UserCredential userCredential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
 
-    // if (userCredential.user != null) {
-    //   SnackBar(
-    //     content: Text('This is a snackbar!'),
-    //     duration: Duration(
-    //         seconds:
-    //             2), // Set the duration for how long the snackbar should be displayed
-    //     action: SnackBarAction(
-    //       label: 'Close',
-    //       onPressed: () {
-    //         // You can add an action when the "Close" button is pressed
-    //         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    //       },
-    //     ),
-    //   );
-    // } else {
-    //   SnackBar(
-    //     content: Text('This is a snackbar!'),
-    //     duration: Duration(
-    //         seconds:
-    //             2), // Set the duration for how long the snackbar should be displayed
-    //     action: SnackBarAction(
-    //       label: 'Close',
-    //       onPressed: () {
-    //         // You can add an action when the "Close" button is pressed
-    //         ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    //       },
-    //     ),
-    //   );
-    // }
-
-    // addUserDetails(_nameController.text.trim(), _bioController.text.trim(),
-    //     int.parse(_ageController.text.trim()), _emailController.text.trim(), );
-     }
-     } on FirebaseAuthException catch (e) {
-    //   print(e);
-    //   ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
-     }
+        if (userCredential.user != null) {
+         
+           DatabaseReference userRef = FirebaseDatabase.instance.reference().child('users');
+          String userId = FirebaseAuth.instance.currentUser!.uid;
+          userRef.child(userId).set({
+            'name': _nameController.text.trim(),
+            'age': _ageController.text.trim(),
+            'bio': _bioController.text.trim(),
+            'gender': _selectedGender ? 'Male' : 'Female', // Replace 'selectedGender' with the actual variable holding the gender value.
+          });
+         
+         
+         
+         
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+              (route) =>
+                  false); // Replace '/home' with the actual route name of your home page.
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      //   print(e);
+      ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
+    }
   } // Add the addUserDetails method
-
-  // Future<dynamic> addUserDetails(
-  //   String name,
-  //   String bio,
-  //   int age,
-  //   String email,
-  // ) async {
-  //   await FirebaseFirestore.instance.collection("users").add({
-  //     'name': name,
-  //     'bio': bio,
-  //     'age': age,'email': email,
-  //     //'gender' :gender,
-  //   });
-  // }
 
 //pass confirm method
   bool passwordConfirmed() {
@@ -171,7 +149,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                GenderSelection(),
+                GenderSelection(onGenderSelected: (isMale ) { setState(() {
+                      _selectedGender = isMale; // Store the selected gender in the state.
+                    }); },),
                 const SizedBox(
                   height: 20,
                 ),
@@ -239,7 +219,10 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         GestureDetector(
           onTap: () {
-            widget.showLogInPage();
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const LogInPage()),
+                (route) => false);
           },
           child: Text(
             " Log In",

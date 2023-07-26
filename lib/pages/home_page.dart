@@ -1,4 +1,7 @@
+
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -13,6 +16,35 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
+  Map<String, dynamic>? userData;
+
+ @override
+  void initState() {
+    super.initState();
+   
+    _fetchUserData();
+  }
+
+void _fetchUserData() {
+    String userId = user.uid;
+    DatabaseReference userRef =
+        FirebaseDatabase.instance.ref().child('users').child(userId);
+
+    userRef.onValue.listen((event) {
+    // Handle the data when it is received
+    if (event.snapshot.value != null) {
+      setState(() {
+        userData = Map<String, dynamic>.from(event.snapshot.value as Map<dynamic, dynamic>);
+      });
+    }
+  }, onError: (Object? error) {
+    // Handle any errors that occur during data retrieval
+    print('Error fetching user data: $error');
+  });
+  }
+
+
+  
   void _deleteAccount(BuildContext context) async {
     try {
       User? user = FirebaseAuth.instance.currentUser;
@@ -74,7 +106,18 @@ class _HomePageState extends State<HomePage> {
               style: const TextStyle(fontSize: 29),
             ),
           ),
-          
+          if (userData != null) // Check if user data is available
+            Center(
+              child: Column(
+                children: [
+                  Text('Name: ${userData!['name']}'),
+                  Text('Age: ${userData!['age']}'),
+                  Text('Bio: ${userData!['bio']}'),
+                 // Text('Gender: ${userData!['gender']}'),
+                  // Add other user details as needed
+                ],
+              ),
+            ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:square_ghost/pages/auth_pages/forgot_password_page.dart';
+import 'package:square_ghost/pages/signup_page.dart';
 import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
 
 import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
@@ -8,8 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../reusable_widgets/constants.dart';
 
 class LogInPage extends StatefulWidget {
-  final VoidCallback showSignUpPage;
-  const LogInPage({super.key, required this.showSignUpPage});
+  
+  const LogInPage({super.key,});
 
   @override
   State<LogInPage> createState() => _LogInPageState();
@@ -138,7 +139,10 @@ class _LogInPageState extends State<LogInPage> {
         ),
         GestureDetector(
           onTap: () {
-            widget.showSignUpPage();
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const SignUpPage()),
+                (route) => false);
           },
           child: Text(
             " Sign Up",

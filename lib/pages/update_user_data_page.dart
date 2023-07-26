@@ -108,7 +108,7 @@ class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
               const SizedBox(
                 height: 20,
               ),
-              GenderSelection(),
+              GenderSelection(onGenderSelected: (bool ) {  },),
               const SizedBox(
                 height: 20,
               ),
