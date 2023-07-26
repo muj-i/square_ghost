@@ -1,4 +1,10 @@
-# square_ghost
+## Square Ghost
+
+# App view
+
+![Alt Text](assets/screenshots/ss1.png)
+![Alt Text](assets/screenshots/ss2.png)
+
 
 A new Flutter project.
 
