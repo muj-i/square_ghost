@@ -4,9 +4,7 @@
 
 ![Alt Text](assets/screenshots/ss1.png)
 ![Alt Text](assets/screenshots/ss2.png)
-![Alt Text](assets/screenshots/ss3.png)
-![Alt Text](assets/screenshots/ss4.png)
-![Alt Text](assets/screenshots/ss5.png)
+
 
 A new Flutter project.
 

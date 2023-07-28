@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:square_ghost/pages/auth_pages/logedin_checking_page.dart';
+import 'package:square_ghost/pages/login_page.dart';
+import 'package:square_ghost/pages/signup_page.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -20,36 +22,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Square Ghost',
       theme: ThemeData(
-          primaryColor: Colors.black,
-          useMaterial3: true,
-          inputDecorationTheme: InputDecorationTheme(
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 25,
-            ),
-            labelStyle: TextStyle(color: Colors.grey.shade800),
-            filled: true,
-            fillColor: Colors.grey.shade200,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(color: Colors.white)),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: BorderSide(color: Colors.grey.shade400),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: Colors.red),
-              // Customize the error border color
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: Colors.red),
-            ),
-          )
-          //popupMenuTheme: Color,
-          ),
+        primaryColor: Colors.black,
+        useMaterial3: true,
+ //popupMenuTheme: Color,
+      ),
       debugShowCheckedModeBanner: false,
       home: const LogedinCheckingPage(),
+      
     );
   }
 }

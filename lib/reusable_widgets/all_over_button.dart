@@ -7,8 +7,7 @@ class AllOverButton extends StatelessWidget {
 
   const AllOverButton({
     super.key,
-    required this.onTap,
-    required this.buttonName,
+    required this.onTap, required this.buttonName,
   });
 
   @override
@@ -26,8 +25,7 @@ class AllOverButton extends StatelessWidget {
           child: MaterialButton(
             onPressed: onTap,
             // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            padding:
-                const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
             child: Text(
               buttonName,
               style: myButtonTextStyle,

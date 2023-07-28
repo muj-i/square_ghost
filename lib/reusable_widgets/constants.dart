@@ -6,16 +6,13 @@ var myBackgroundColor = Colors.grey[300];
 var myGFontTextStyle =
     GoogleFonts.bebasNeue(color: Colors.grey[800], fontSize: 22);
 
-var myGFontHomeTextStyle =
-    GoogleFonts.aBeeZee(color: Colors.grey[800], fontSize: 26);
-
 var myTextStyle = TextStyle(color: Colors.grey[800], fontSize: 16);
 
 var myGestureTextStyle = TextStyle(
     color: Colors.grey.shade800, fontSize: 15, fontWeight: FontWeight.bold);
 
-var myButtonTextStyle = const TextStyle(
-    color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
+var myButtonTextStyle =
+    const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18);
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarTitle;
@@ -40,7 +37,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class ErrorDialog {
-  // ignore: prefer_typing_uninitialized_variables
   final errorMessage;
 
   const ErrorDialog({required this.errorMessage});
@@ -50,10 +46,7 @@ class ErrorDialog {
       builder: (context) {
         return AlertDialog(
           backgroundColor: myBackgroundColor,
-          content: Text(
-            errorMessage,
-            style: myGestureTextStyle,
-          ),
+          content: Text(errorMessage, style: myGestureTextStyle,),
         );
       },
     );
@@ -69,7 +62,6 @@ Image logoWidget(String imageName) {
     //color: Colors.white,
   );
 }
-
 Image logoNameWidget(String imageName) {
   return Image.asset(
     imageName,

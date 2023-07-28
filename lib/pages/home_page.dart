@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:square_ghost/pages/auth_pages/login_page.dart';
 
 import 'package:square_ghost/pages/update_user_data_page.dart';
 import 'package:square_ghost/reusable_widgets/all_over_button.dart';
@@ -126,13 +125,6 @@ class _HomePageState extends State<HomePage> {
                         AllOverButton(
                             onTap: () {
                               FirebaseAuth.instance.signOut();
-                             // setState(() {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LogInPage()),
-                                );
-                              // });
                             },
                             buttonName: "LOG OUT"),
                       ],

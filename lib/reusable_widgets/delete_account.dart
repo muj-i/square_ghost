@@ -41,33 +41,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              backgroundColor: myBackgroundColor,
-              content: Text(
-                'Wanna delete account?',
-                style: myGestureTextStyle,
-              ),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text('Cancel',style: TextStyle(color: Colors.black),)),
-                TextButton(
-                    onPressed: () {
-                      _deleteAccount(context);
-                    },
-                    child: Text('Delete',style: TextStyle(color: Colors.redAccent),)),
-
-              ],
-            );
-          },
-        );
-      },
+      onPressed: () => _deleteAccount(context),
       icon: Icon(
         FontAwesomeIcons.trash,
         size: 19,
