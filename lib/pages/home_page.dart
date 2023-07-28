@@ -126,8 +126,13 @@ class _HomePageState extends State<HomePage> {
                         AllOverButton(
                             onTap: () {
                               FirebaseAuth.instance.signOut();
-                              
-                  
+                             // setState(() {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LogInPage()),
+                                );
+                              // });
                             },
                             buttonName: "LOG OUT"),
                       ],
