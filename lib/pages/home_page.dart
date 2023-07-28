@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         Card(
                           child: ListTile(
                             title: Text(
-                              'Nmae: ${userData!['name']}',
+                              'Name: ${userData!['name']}',
                               style: myGFontHomeTextStyle,
                             ),
                           ),
