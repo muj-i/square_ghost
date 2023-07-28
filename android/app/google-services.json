@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "389989520532",
+    "firebase_url": "https://square-ghost-renew-default-rtdb.firebaseio.com",
+    "project_id": "square-ghost-renew",
+    "storage_bucket": "square-ghost-renew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389989520532:android:867fbf24d16d65318b5081",
+        "android_client_info": {
+          "package_name": "com.muj.squareghost.square_ghost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389989520532-s10ou7qcb6vubckcl930vdq465tb0bbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4aduQhNslG46xanjnToRM5XnDJbBByLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389989520532-s10ou7qcb6vubckcl930vdq465tb0bbh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "389989520532-ig0c6n0091jurp2levr72etq6moj5d13.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.muj.squareghost.squareGhost"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
