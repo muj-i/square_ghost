@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
         });
       }
     }, onError: (Object? error) {
-      ErrorDialog(errorMessage: error.toString()).showAlertDialog(context);
+      if (mounted) {
+        ErrorDialog(errorMessage: error.toString()).showAlertDialog(context);
+      }
     });
   }
 

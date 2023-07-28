@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:square_ghost/pages/auth_pages/forgot_password_page.dart';
 import 'package:square_ghost/pages/auth_pages/signup_page.dart';
+import 'package:square_ghost/pages/home_page.dart';
 import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,6 +38,11 @@ class _LogInPageState extends State<LogInPage> {
         await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: _emailController.text.trim(),
             password: _passwordController.text);
+        Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()),
+                                  (route) => false);
       } on FirebaseAuthException catch (e) {
         ErrorDialog(errorMessage: e.message.toString())
             .showAlertDialog(context);
