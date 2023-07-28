@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:square_ghost/pages/auth_pages/forgot_password_page.dart';
-import 'package:square_ghost/pages/signup_page.dart';
+import 'package:square_ghost/pages/auth_pages/signup_page.dart';
 import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
 
-import 'package:square_ghost/reusable_widgets/text_field_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../reusable_widgets/constants.dart';
+import '../../reusable_widgets/constants.dart';
 
 class LogInPage extends StatefulWidget {
-  
-  const LogInPage({super.key,});
+  const LogInPage({
+    super.key,
+  });
 
   @override
   State<LogInPage> createState() => _LogInPageState();
@@ -21,17 +21,31 @@ class _LogInPageState extends State<LogInPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  // ignore: unused_field
+  bool _isLogingIn = false;
+
 //sign in method
-  Future signIn() async {
-    //try{
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
-    //     } on FirebaseAuthException catch (e) {
-    //  // ErrorDialog(errorMessage: e.message.toString()).showAlertDialog(context);
-    // }
+  Future logIn() async {
+    if (_formKey.currentState?.validate() ?? false) {
+      setState(() {
+        _isLogingIn = true;
+      });
+
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text);
+      } on FirebaseAuthException catch (e) {
+        ErrorDialog(errorMessage: e.message.toString())
+            .showAlertDialog(context);
+      } finally {
+        setState(() {
+          _isLogingIn = false;
+        });
+      }
+    }
   }
 
   //dispose for memory management
@@ -68,39 +82,56 @@ class _LogInPageState extends State<LogInPage> {
                   height: 30,
                 ),
                 //email textfiled
-                TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Email Address',
-
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: TextFormField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Email Address',
+                      prefixIcon: Icon(Icons.email_rounded),
+                      prefixIconConstraints: BoxConstraints(
+                        minWidth: 65,
+                      ),
+                    ),
+                    validator: (String? value) {
+                      if (value?.isEmpty ?? true) {
+                        return 'Please fill out this field';
+                      }
+                      return null;
+                    },
                   ),
-                  validator: (String? value) {
-                    if (value?.isEmpty ?? true) {
-                      return 'Enter your email';
-                    }
-                    return null;
-                  },
                 ),
-                // TextFormField(
-                //   labelText: 'Enter Email Address',
-                //   icon: Icons.email_rounded,
-                //   obscureText: false,
-                //   controller: _emailController,
-                //   TextInputType: TextInputType.emailAddress, TextInputAction: TextInputAction.next,
-                // ),
+
                 const SizedBox(
                   height: 20,
                 ),
                 //password textfiled
-                ReusableTextField(
-                  labelText: 'Enter Password',
-                  icon: Icons.lock_rounded,
-                  obscureText: true,
-                  controller: _passwordController,
-                  keyboardType: TextInputType.text, keyboardAction: TextInputAction.done,
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter Password',
+                      prefixIcon: Icon(Icons.lock_rounded),
+                      prefixIconConstraints: BoxConstraints(
+                        minWidth: 65,
+                      ),
+                    ),
+                    validator: (String? value) {
+                      if (value?.isEmpty ?? true) {
+                        return 'Please fill out this field';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
+
                 const SizedBox(
                   height: 10,
                 ),
@@ -112,10 +143,14 @@ class _LogInPageState extends State<LogInPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return ForgotPasswordPage();
-                          },),);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const ForgotPasswordPage();
+                              },
+                            ),
+                          );
                         },
                         child: Text(
                           'Forgot Password?',
@@ -129,11 +164,17 @@ class _LogInPageState extends State<LogInPage> {
                   height: 10,
                 ),
                 //sign in button
-                LogInSignUpButton(
-                  isLogin: true,
-                  onTap: () {
-                    signIn();
-                  },
+                Visibility(
+                  visible: _isLogingIn == false,
+                  replacement: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                  child: LogInSignUpButton(
+                    isLogin: true,
+                    onTap: () {
+                      logIn();
+                    },
+                  ),
                 ),
                 const SizedBox(
                   height: 10,

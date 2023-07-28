@@ -1,12 +1,13 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:square_ghost/pages/update_user_data_page.dart';
+import 'package:square_ghost/reusable_widgets/all_over_button.dart';
 
 import 'package:square_ghost/reusable_widgets/constants.dart';
+import 'package:square_ghost/reusable_widgets/delete_account.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,123 +20,140 @@ class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser!;
   Map<String, dynamic>? userData;
 
- @override
+  @override
   void initState() {
     super.initState();
-   
+
     _fetchUserData();
   }
 
-void _fetchUserData() {
+  void _fetchUserData() {
     String userId = user.uid;
     DatabaseReference userRef =
         FirebaseDatabase.instance.ref().child('users').child(userId);
 
     userRef.onValue.listen((event) {
-    // Handle the data when it is received
-    if (event.snapshot.value != null) {
-      setState(() {
-        userData = Map<String, dynamic>.from(event.snapshot.value as Map<dynamic, dynamic>);
-      });
-    }
-  }, onError: (Object? error) {
-    // Handle any errors that occur during data retrieval
-    print('Error fetching user data: $error');
-  });
-  }
-
-
-  
-  void _deleteAccount(BuildContext context) async {
-    try {
-      User? user = FirebaseAuth.instance.currentUser;
-      if (user != null) {
-        await user.delete();
-        
+      // Handle the data when it is received
+      if (event.snapshot.value != null) {
+        setState(() {
+          userData = Map<String, dynamic>.from(
+              event.snapshot.value as Map<dynamic, dynamic>);
+        });
       }
-    } catch (e) {
-      
-      // ignore: avoid_print
-      print('Error deleting account: $e');
-      
-    }
+    }, onError: (Object? error) {
+      ErrorDialog(errorMessage: error.toString()).showAlertDialog(context);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Text(
-              'Square Ghost',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+        backgroundColor: Colors.black,
+        elevation: 0,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Square Ghost',
+            style: TextStyle(
+                color: myBackgroundColor,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
           ),
-          actions: [
-            PopupMenuButton<String>(
-
-
-              onSelected: (value) {
-                if (value == 'log_out') {
-                  FirebaseAuth.instance.signOut();
-                  setState(() {
-
-                  });
-                } else if (value == 'delete_account') {
-                  
-                  _deleteAccount;
-                }
-              },
-              itemBuilder: (BuildContext context) {
-                return [
-                  PopupMenuItem<String>(
-                    value: 'log_out',
-                    child: Text('Log Out'),
-                  ),
-                  PopupMenuItem<String>(
-                    value: 'delete_account',
-                    child: Text('Delete Account'),
-                  ),
-                ];
-              },
-            ),
-          ]),
-      backgroundColor: myBackgroundColor,
-      body: Column(
-        children: [
-          Center(
-            child: Text(
-              'Signed in as: ${user.email!}',
-              style: const TextStyle(fontSize: 29),
-            ),
-          ),
-          if (userData != null) // Check if user data is available
-            Center(
-              child: Column(
-                children: [
-                  Text('Name: ${userData!['name']}'),
-                  Text('Age: ${userData!['age']}'),
-                  Text('Bio: ${userData!['bio']}'),
-                  Text('Gender: ${userData!['gender']}'),
-                  // Add other user details as needed
-                ],
-              ),
-            ),
+        ),
+        actions: const [
+          DeleteAccount(),
         ],
       ),
+      backgroundColor: myBackgroundColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            if (userData != null)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  width: 1000,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Card(
+                          child: ListTile(
+                            title: Text(
+                              'Email: ${user.email!}',
+                              style: myGFontHomeTextStyle,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title: Text(
+                              'Nmae: ${userData!['name']}',
+                              style: myGFontHomeTextStyle,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title: Text(
+                              'Age: ${userData!['age']}',
+                              style: myGFontHomeTextStyle,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title: Text(
+                              'Bio: ${userData!['bio']}',
+                              style: myGFontHomeTextStyle,
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            title: Text(
+                              'Gender: ${userData!['gender']}',
+                              style: myGFontHomeTextStyle,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        AllOverButton(
+                            onTap: () {
+                              FirebaseAuth.instance.signOut();
+                            },
+                            buttonName: "LOG OUT"),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
+          backgroundColor: Colors.black,
+          foregroundColor: myBackgroundColor,
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const UpdateUserDataInputPage()));
-
+              context,
+              MaterialPageRoute(
+                builder: (context) => UpdateUserDataInputPage(
+                  existingName: userData!['name'],
+                  existingBio: userData!['bio'],
+                  existingAge: userData!['age'],
+                  existingGender: userData!['gender'] ==
+                      'Male', // Assuming you are storing the gender as 'Male' or 'Female'
+                ),
+              ),
+            );
           },
-          child: Icon(
-            FontAwesomeIcons.solidPenToSquare,
+          child: const Icon(
+            FontAwesomeIcons.penToSquare,
             color: Colors.white,
           )),
     );

@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class GenderSelection extends StatefulWidget {
+class SelectedGender extends StatefulWidget {
   final Function(bool) onGenderSelected;
-  
-GenderSelection({required this.onGenderSelected});
+  final bool existingGender;
+  const SelectedGender(
+      {super.key,
+      required this.onGenderSelected,
+      required this.existingGender});
   @override
-  _GenderSelectionState createState() => _GenderSelectionState();
+  // ignore: library_private_types_in_public_api
+  _SelectedGenderState createState() => _SelectedGenderState();
 }
 
-class _GenderSelectionState extends State<GenderSelection> {
-  bool _isMale = true;
+class _SelectedGenderState extends State<SelectedGender> {
+  bool? _isMale;
+  @override
+  void initState() {
+    super.initState();
+    _isMale =
+        widget.existingGender; // Set the initial value from the existing gender
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +42,7 @@ class _GenderSelectionState extends State<GenderSelection> {
               size: 17,
               color: Colors.grey.shade800,
             ),
-            SizedBox(width: 23),
+            const SizedBox(width: 23),
             Text(
               'Gender: ',
               style: myTextStyle,
@@ -45,7 +55,7 @@ class _GenderSelectionState extends State<GenderSelection> {
                 setState(() {
                   _isMale = value!;
                 });
-                widget.onGenderSelected(_isMale);
+                widget.onGenderSelected(_isMale!);
               },
             ),
             Text(
@@ -60,7 +70,7 @@ class _GenderSelectionState extends State<GenderSelection> {
                 setState(() {
                   _isMale = value!;
                 });
-                widget.onGenderSelected(_isMale);
+                widget.onGenderSelected(_isMale!);
               },
             ),
             Text(

@@ -2,16 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:square_ghost/pages/auth_pages/signedup_checking_page.dart';
 import 'package:square_ghost/pages/home_page.dart';
-import 'package:square_ghost/pages/login_page.dart';
-
-
+import 'package:square_ghost/pages/auth_pages/login_page.dart';
 
 class LogedinCheckingPage extends StatelessWidget {
   const LogedinCheckingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(body: StreamBuilder<User?>(
+    return Scaffold(
+      body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -20,6 +19,7 @@ class LogedinCheckingPage extends StatelessWidget {
             return const LogInPage();
           }
         },
-      ),);
+      ),
+    );
   }
 }
