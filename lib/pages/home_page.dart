@@ -127,6 +127,7 @@ class _HomePageState extends State<HomePage> {
                               FirebaseAuth.instance.signOut();
                             },
                             buttonName: "LOG OUT"),
+                            
                       ],
                     ),
                   ),
