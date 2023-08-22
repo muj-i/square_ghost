@@ -1,4 +1,3 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ class UpdateUserDataInputPage extends StatefulWidget {
       required this.existingGender});
 
   @override
-  // ignore: library_private_types_in_public_api
   _UpdateUserDataInputPageState createState() =>
       _UpdateUserDataInputPageState();
 }
@@ -31,7 +29,6 @@ class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
   final _bioController = TextEditingController();
   final _ageController = TextEditingController();
   bool _selectedGender = true;
-  // ignore: unused_field
   bool _isLogedIn = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final user = FirebaseAuth.instance.currentUser!;
@@ -182,7 +179,8 @@ class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
                     inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly, // Only allow digits
+                      FilteringTextInputFormatter
+                          .digitsOnly, // Only allow digits
                       LengthLimitingTextInputFormatter(2), // Limit the length
                     ],
                     controller: _ageController,
@@ -227,8 +225,7 @@ class _UpdateUserDataInputPageState extends State<UpdateUserDataInputPage> {
                         String bio = _bioController.text;
                         int age = int.tryParse(_ageController.text) ?? 0;
                         bool isMale =
-                            true; // Replace with the actual gender selection logic
-
+                            true;
                         updateUserInformation(name, bio, age, isMale);
                         if (_formKey.currentState?.validate() ?? false) {
                           setState(() {

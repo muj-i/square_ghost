@@ -1,13 +1,10 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:square_ghost/pages/home_page.dart';
 import 'package:square_ghost/pages/auth_pages/login_page.dart';
-
+import 'package:square_ghost/pages/home_page.dart';
 import 'package:square_ghost/reusable_widgets/constants.dart';
 import 'package:square_ghost/reusable_widgets/gender_selection.dart';
 import 'package:square_ghost/reusable_widgets/log_in_sign_up_button.dart';
@@ -31,7 +28,6 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _selectedGender = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  // ignore: unused_field
   bool _isSigningUp = false;
 //dispose for memory management
   @override
@@ -86,7 +82,6 @@ class _SignUpPageState extends State<SignUpPage> {
               .showAlertDialog(context);
         }
       } on FirebaseAuthException catch (e) {
-        //   print(e);
         ErrorDialog(errorMessage: e.message.toString())
             .showAlertDialog(context);
       } finally {

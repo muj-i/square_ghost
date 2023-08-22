@@ -13,7 +13,7 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _emailController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // ignore: unused_field
+
   bool _isSigningUp = false;
   @override
   void dispose() {

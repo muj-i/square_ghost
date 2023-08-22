@@ -3,10 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:square_ghost/pages/auth_pages/login_page.dart';
-
 import 'package:square_ghost/pages/update_user_data_page.dart';
 import 'package:square_ghost/reusable_widgets/all_over_button.dart';
-
 import 'package:square_ghost/reusable_widgets/constants.dart';
 import 'package:square_ghost/reusable_widgets/delete_account.dart';
 
@@ -34,7 +32,6 @@ class _HomePageState extends State<HomePage> {
         FirebaseDatabase.instance.ref().child('users').child(userId);
 
     userRef.onValue.listen((event) {
-      // Handle the data when it is received
       if (event.snapshot.value != null) {
         setState(() {
           userData = Map<String, dynamic>.from(
@@ -154,8 +151,7 @@ class _HomePageState extends State<HomePage> {
                   existingName: userData!['name'],
                   existingBio: userData!['bio'],
                   existingAge: userData!['age'],
-                  existingGender: userData!['gender'] ==
-                      'Male', // Assuming you are storing the gender as 'Male' or 'Female'
+                  existingGender: userData!['gender'] == 'Male',
                 ),
               ),
             );
