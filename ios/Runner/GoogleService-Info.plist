@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:389989520532:ios:566780c22de59ccc8b5081</string>
+	<key>DATABASE_URL</key>
+	<string>https://square-ghost-renew-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
