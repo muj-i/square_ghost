@@ -108,6 +108,7 @@ The Square Ghost directory structure is organized as follows:
 A heartfelt thanks to [Mitch Koko](https://www.youtube.com/@createdbykoko) for his enlightening tutorial on Firebase & for teaching me how to make UI like this.
 
 The Firebase tutorial of Mitch I follow:
+
 [Firebase x Flutter Tutorial](https://www.youtube.com/watch?v=TkuO8OLgvkk&list=PLlvRDpXh1Se4wZWOWs8yapI8AS_fwDHzf&index=3)
 
 [Email Login & Logout • Flutter Auth Tutorial ♡](https://www.youtube.com/watch?v=_3W-JuIVFlg)
