@@ -14,11 +14,11 @@ A simple CRUD app that uses Firebase Authentication and Firebase Realtime Databa
 ## Square Ghost UI
 
 <div style="display: flex; flex-wrap: wrap;">
-    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss1.png" width="300" />
-    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss2.png" width="300" />
-    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss3.png" width="300" />
-    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss4.png" width="300" />
-    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss5.png" width="300" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss1.png" width="250" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss2.png" width="250" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss3.png" width="250" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss4.png" width="250" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss5.png" width="250" />
     
 </div>
 
