@@ -1,40 +1,26 @@
-## Square Ghost
 
-# Progress Pal: The Task Manager in Flutter!
+# Square Ghost
 
-Elevate your productivity with Progress Pal, a meticulously crafted task manager application designed to streamline your journey towards achieving your goals. With its sleek design and intuitive user interface, Progress Pal redefines task management, making it an indispensable companion for both personal and professional endeavors.
+## Description 
 
-## Progress Pal UI
+A simple CRUD app that uses Firebase Authentication and Firebase Realtime Database.
+
+## Responsibilities
+
+- User authentication with Firebase Authentication
+- Data storage in Firebase Realtime Database
+- CRUD operations on user profiles
+
+## Square Ghost UI
 
 <div style="display: flex; flex-wrap: wrap;">
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss0.png" width="200" height="365" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss1.png" width="200" height="365" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss2.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss3.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss4.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss5.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss6.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss7.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss8.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss9.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss10.png" width="200" height="365" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss11.png" width="200" height="387" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss12.png" width="205" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss13.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss14.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss15.png" width="205" height="387" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss16.png" width="200" />
-    <img src="https://github.com/muj-i/progress_pal/blob/main/screenshots/ss17.png" width="200" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss1.png" width="200" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss2.png" width="200" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss3.png" width="200" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss4.png" width="200" />
+    <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss5.png" width="200" />
+    
 </div>
-
-
-# App view
-
-![Alt Text](assets/screenshots/ss1.png)
-![Alt Text](assets/screenshots/ss2.png)
-![Alt Text](assets/screenshots/ss3.png)
-![Alt Text](assets/screenshots/ss4.png)
-![Alt Text](assets/screenshots/ss5.png)
 
 ## Getting Started
 
@@ -49,13 +35,13 @@ Follow these steps to run the Progress Pal Application:
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/muj-i/progress_pal.git
+git clone https://github.com/muj-i/square_ghost.git
 ```
 
 2. Navigate to the project folder:
 
 ```bash
-cd progress_pal
+cd square_ghost
 ```
 
 3. Install dependencies:
@@ -73,21 +59,18 @@ flutter run
 ```
 ## Used Packages
 
-Progress Pal integrates the following packages to enhance functionality:
-
-- `flutter_svg: ^2.0.7`: Display Scalable Vector Graphics (SVG) images.
-- `pin_code_fields: ^8.0.1`: Easily implement secure PIN code input fields.
-- `font_awesome_flutter: ^10.5.0`: Access a wide range of Font Awesome icons.
-- `image_picker: ^1.0.1`: Enable users to select images from their devices.
-- `http: ^1.1.0`: Perform HTTP requests and interact with APIs.
-- `google_nav_bar: ^5.0.6`: Create sleek, customizable bottom navigation bars with Google's Material Design.
-- `flutter_launcher_icons: ^0.13.1`: Simplify the process of generating launcher icons on various platforms.
-- `get: ^4.6.5`: Implement state management and dependency injection with the GetX library.
-- `get_storage: ^2.1.1`: Local data storage and retrieval tasks using the GetStorage.
+Square Ghost integrates the following packages to enhance functionality:
+- `firebase_core: ^2.15.0`: Firebase Core for Firebase integration.
+- `firebase_auth: ^4.7.1`: Firebase Authentication for user authentication.
+- `google_fonts: ^5.1.0`: Access Google Fonts for typography options.
+- `font_awesome_flutter: ^10.5.0`: Access a wide range of Font Awesome icons for stylish visuals.
+- `firebase_database: ^10.2.4`: Firebase Realtime Database for real-time data storage.
+- `flutter_launcher_icons: ^0.13.1`: Simplify the generation of launcher icons on various platforms.
+- `firebase_crashlytics: ^3.3.5`: Firebase Crashlytics for crash reporting and analysis.
 
 ## Project Directory Structure
 
-The Progress Pal directory structure is organized as follows:
+The Square Ghost directory structure is organized as follows:
 
 ```
   progress_pal/
@@ -122,10 +105,12 @@ The Progress Pal directory structure is organized as follows:
 
 ## Special Thanks
 
-### A heartfelt thanks to my mentors:
+A heartfelt thanks to [Mitch Koko](https://www.youtube.com/@createdbykoko) for his enlightening tutorial on Firebase & for teaching me how to make UI like this.
 
-[Rabbil Hasan](https://github.com/rupomsoft) for his enlightening prerecorded class and [Md Rafat J. M.](https://github.com/RafatMeraz) for teaching me how to make UI like this and the API integration seamless.
+The Firebase tutorial of Mitch I follow:
+[Firebase x Flutter Tutorial](https://www.youtube.com/watch?v=TkuO8OLgvkk&list=PLlvRDpXh1Se4wZWOWs8yapI8AS_fwDHzf&index=3)
 
+[Email Login & Logout • Flutter Auth Tutorial ♡](https://www.youtube.com/watch?v=_3W-JuIVFlg)
 
 ## License
 
