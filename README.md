@@ -83,19 +83,19 @@ The Square Ghost directory structure is organized as follows:
   │   ├── pages/
   │   │   ├── auth_pages/
   │   │   │   ├── forgot_password_page.dart
-  │   │   │   ├── lib/pages/auth_pages/logedin_checking_page.dart
-  │   │   │   ├── lib/pages/auth_pages/login_page.dart
-  │   │   │   ├── lib/pages/auth_pages/signup_page.dart
-  │   │   ├── lib/pages/home_page.dart
-  │   │   ├── lib/pages/update_user_data_page.dart
+  │   │   │   ├── logedin_checking_page.dart
+  │   │   │   ├── login_page.dart
+  │   │   │   ├── signup_page.dart
+  │   │   ├── home_page.dart
+  │   │   ├── update_user_data_page.dart
   │   ├── reusable_widgets/
-  │   │   ├── lib/reusable_widgets/all_over_button.dart
-  │   │   ├── lib/reusable_widgets/constants.dart
-  │   │   ├── lib/reusable_widgets/delete_account.dart
-  │   │   ├── lib/reusable_widgets/gender_selection.dart
-  │   │   ├── lib/reusable_widgets/log_in_sign_up_button.dart
-  │   │   ├── lib/reusable_widgets/selected_gender.dart
-  │   ├── lib/firebase_options.dart
+  │   │   ├── all_over_button.dart
+  │   │   ├── constants.dart
+  │   │   ├── delete_account.dart
+  │   │   ├── gender_selection.dart
+  │   │   ├── log_in_sign_up_button.dart
+  │   │   ├── selected_gender.dart
+  │   ├── firebase_options.dart
   │   ├── main.dart
 ```
 
