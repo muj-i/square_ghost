@@ -30,7 +30,7 @@ Ensure Flutter is installed on your machine. For installation instructions, refe
 
 ### Installation
 
-Follow these steps to run the Progress Pal Application:
+Follow these steps to run the Square Ghost Application:
 
 1. Clone this repository to your local machine:
 
