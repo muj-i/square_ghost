@@ -13,6 +13,8 @@ A simple CRUD app that uses Firebase Authentication and Firebase Realtime Databa
 
 ## Square Ghost UI
 
+### [Video demonstration of Square Ghost](https://www.linkedin.com/posts/muj-i_project-namesquare-ghost-technologies-activity-7101751256565628928-nVIb?utm_source=share&utm_medium=member_desktop)
+
 <div style="display: flex; flex-wrap: wrap;">
     <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss1.png" width="250" />
     <img src="https://github.com/muj-i/square_ghost/blob/main/screenshots/ss2.png" width="250" />
